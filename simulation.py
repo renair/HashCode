@@ -18,25 +18,29 @@ class Simulation:
 		self.vehicles = vehicles
 
 	def simulate(self):
+		#print("time" + str(self.time))
 		for vehicle in self.vehicles:
-			if vehicle.distanceToStart==0:
+			if vehicle.distanceToStart==0 and vehicle.isAssigned:
 				vehicle.distance -= 1
+				#print("IdRide:" + str(vehicle.idRide)+"distance"+str(vehicle.distance))
 				if vehicle.distance == 0:
 					self.removeRide(vehicle)
 			else:
 				vehicle.distanceToStart-=1
+
 		self.time += 1
 		return self.freeVehicles()
 
 	def removeRide(self, vehicle):
+		#print("ridefinish:" + str(vehicle.idRide) + "finished in"+str(vehicle.pos))
 		i = self.vehicles.index(vehicle)
-		self.vehicles[i].pos = (-1,-1)
 		if self.vehicles[i].idRide != -1:
 			self.vehicles[i].completedRides += str(self.vehicles[i].idRide) + " " #self.vehicles[i].idRide if self.vehicles[i].completedRides=="" else " " + self.vehicles[i].idRide
 		self.vehicles[i].isAssigned = False
 
 	#ride has all from input
 	def addRide(self, ride, vehicle):
+		#print("risestart:" + str(ride.id) + str(vehicle.pos))
 		if(ride.latest < self.time):
 			return
 		##v = Vehicle()
