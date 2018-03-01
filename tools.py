@@ -22,3 +22,4 @@ def get_max_points(start_pos, client_pos, finish_pos,\
     
     
     return 1
+
