@@ -5,6 +5,8 @@ class Vehicle:
 		self.pos = (0,0)
 		self.distance = 0
 		self.isAssigned = False
+		self.completedRides = ""
+		self.idRide = -1
 
 class Simulation:
 	#vehicles  pos (-1;-1 if busy); distance; isAssigned
@@ -24,13 +26,18 @@ class Simulation:
 	def removeRide(vehicle):
 		i = self.vehicles.indexOf(vehicle)
 		self.vehicles[i].pos = (-1,-1)
+		self.vehicles[i].completedRides+=self.vehicles[i].idRide if self.vehicles[i].completedRides=="" else " "+self.vehicles[i].idRide
+		self.vehicles[i].isAssigned = False
 
 	#ride has all from input
 	def addRide(ride, vehicle):
 		if(ride.endTime>time):
 			return
-		v = self.vehicles[vehicle]
-		v.distance=t.getDistance(vehicle.pos, ride.finish)
+		i = self.vehicles.indexOf(vehicle)
+		self.vehicles[i].distance=t.getDistance(vehicle.pos, ride.finish)
+		self.vehicles[i].pos = ride.finish
+		self.vehicles[i].idRide = ride.id
+		self.vehicles[i].isAssigned = True
 
 	def freeVehicles():
 		freeVehicles = []
