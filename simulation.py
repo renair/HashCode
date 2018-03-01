@@ -25,7 +25,7 @@ class Simulation:
 					self.removeRide(vehicle)
 			else:
 				vehicle.distanceToStart-=1
-			self.time+=1
+		self.time += 1
 		return self.freeVehicles()
 
 	def removeRide(self, vehicle):
