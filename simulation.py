@@ -6,7 +6,7 @@ class Vehicle:
 		self.distance = 0
 		self.distanceToStart = 0
 		self.isAssigned = False
-		self.completedRides = ""
+		self.completedRides = []
 		self.idRide = -1
 
 class Simulation:
@@ -35,7 +35,7 @@ class Simulation:
 		#print("ridefinish:" + str(vehicle.idRide) + "finished in"+str(vehicle.pos))
 		i = self.vehicles.index(vehicle)
 		if self.vehicles[i].idRide != -1:
-			self.vehicles[i].completedRides += str(self.vehicles[i].idRide) + " " #self.vehicles[i].idRide if self.vehicles[i].completedRides=="" else " " + self.vehicles[i].idRide
+			vehicle.completedRides.append(str(vehicle.idRide))
 		self.vehicles[i].isAssigned = False
 
 	#ride has all from input
