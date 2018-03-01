@@ -5,8 +5,8 @@ class Simulation:
 	#time
 
 	def __init__(self,vehicles):
-        self.time = 0
-        self.vehicles = vehicles
+		self.time = 0
+		self.vehicles = vehicles
 
 	def simulate():
 		for vehicle in self.vehicles:
