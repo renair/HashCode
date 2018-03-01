@@ -4,13 +4,13 @@ import simulation
 import tools
 
 model, rides = pars.parse_file("a_example.in")
-
+vehicles = [simulation.Vehicle() for _ in range(model.vehicles)]
 
 #Відсортувати список поїздок
-sm = Simulation()
+sm = simulation.Simulation(vehicles)
 #Цикл:
 for v in sm.vehicles:
-	ride = get_ride_for_vehicle(v, 0, rides, model.steps, model.per_time_bonus)
+	ride = tools.get_ride_for_vehicle(v, 0, rides, model.steps, model.per_time_bonus)
 	sm.addRide(ride, v)
 
 while sm.time < model.steps or len(rides) == 0:
@@ -18,6 +18,9 @@ while sm.time < model.steps or len(rides) == 0:
 #Запустити симуляцію
 	free_cars = sm.simulate()
 	for v in free_cars:
-		ride = get_ride_for_vehicle(v, sm.time, rides, model.steps, model.per_time_bonus)
+		ride = tools.get_ride_for_vehicle(v, sm.time, rides, model.steps, model.per_time_bonus)
 		sm.addRide(ride, v)
 #Взяти позиції автомобілів із симуляції
+
+for v in vehicles:
+	print(v.completedRides)

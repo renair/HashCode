@@ -21,7 +21,7 @@ def get_model(str):
 
 def get_rides(lines):
 	res = []
-	int  i = 0
+	i = 0
 	for l in lines:
 		ride = obj.Ride()
 		splited = l.split(' ')
