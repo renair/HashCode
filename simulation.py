@@ -29,7 +29,7 @@ class Simulation:
 		return self.freeVehicles()
 
 	def removeRide(self, vehicle):
-		i = self.vehicles.indexOf(vehicle)
+		i = self.vehicles.index(vehicle)
 		self.vehicles[i].pos = (-1,-1)
 		if self.vehicles[i].idRide != -1:
 			self.vehicles[i].completedRides += str(self.vehicles[i].idRide) + " " #self.vehicles[i].idRide if self.vehicles[i].completedRides=="" else " " + self.vehicles[i].idRide
@@ -37,15 +37,15 @@ class Simulation:
 
 	#ride has all from input
 	def addRide(self, ride, vehicle):
-		if(ride.latest > self.time):
+		if(ride.latest < self.time):
 			return
-		v = Vehicle()
-		v.distance=t.time_to_arrive(vehicle.pos, ride.finish)
-		v.distanceToStart=t.time_to_arrive(vehicle.pos, ride.start)
-		v.pos = ride.finish
-		v.idRide = ride.id
-		v.isAssigned = True
-		self.vehicles.append(v)
+		##v = Vehicle()
+		vehicle.distance=t.time_to_arrive(vehicle.pos, ride.finish)
+		vehicle.distanceToStart=t.time_to_arrive(vehicle.pos, ride.start)
+		vehicle.pos = ride.finish
+		vehicle.idRide = ride.id
+		vehicle.isAssigned = True
+		#self.vehicles.append(v)
 
 	def freeVehicles(self):
 		freeVehicles = []
