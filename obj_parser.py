@@ -21,12 +21,15 @@ def get_model(str):
 
 def get_rides(lines):
 	res = []
+	int  i = 0
 	for l in lines:
 		ride = obj.Ride()
 		splited = l.split(' ')
+		ride.id = i
 		ride.start = (int(splited[0]), int(splited[1]))
 		ride.finish = (int(splited[2]), int(splited[3]))
 		ride.earliest = int(splited[4])
 		ride.latest = int(splited[5])
 		res.append(ride)
+		i += 1
 	return res

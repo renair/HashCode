@@ -11,6 +11,7 @@ class Model:
 
 class Ride:
 	def __init__(self):
+		self.id = 0
 		self.start = (0, 0)
 		self.finish = (0, 0)
 		self.earliest = 0
