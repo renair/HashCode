@@ -23,9 +23,6 @@ def get_max_points(start_pos, ride, curr_time, total_steps, bonus):
 		return 0
 	
 	return default_scores + bonus
-	
-def get_ride_for_vehicle(car, time, rides, total_steps, bonus):
-	return max(rides, key = lambda r: get_max_points(car.pos, r, time, total_steps, bonus))
 
 def get_heu_points(start_pos, ride, curr_time, total_steps, bonus):
     client_pos = ride.start
@@ -50,3 +47,6 @@ def get_heu_points(start_pos, ride, curr_time, total_steps, bonus):
     
     dispersion = 1 - (max_time - default_scores)
     return (default_scores + bonus) * dispersion
+	
+def get_ride_for_vehicle(car, time, rides, total_steps, bonus):
+	return max(rides, key = lambda r: get_max_points(car.pos, r, time, total_steps, bonus))
