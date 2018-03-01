@@ -1,5 +1,11 @@
 import tools as t
 
+class Vehicle:
+	def __init__(self):
+		self.pos = (0,0)
+		self.distance = 0
+		self.isAssigned = False
+
 class Simulation:
 	#vehicles  pos (-1;-1 if busy); distance; isAssigned
 	#time
@@ -24,7 +30,7 @@ class Simulation:
 		if(ride.endTime>time):
 			return
 		v = self.vehicles[vehicle]
-		v.distance=t.getDistance(vehicle.pos, ride.end)
+		v.distance=t.getDistance(vehicle.pos, ride.finish)
 
 	def freeVehicles():
 		freeVehicles = []
